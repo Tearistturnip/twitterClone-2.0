@@ -23,7 +23,18 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         if let user = User.current {
             // get the things e.g. user.profileImage
+            /*
+            print(user.profileImagePath!)
+            let please = URL(user.profileImagePath)
+ */
+            let profilePicURL = user.profileImagePath
+            let path = URL(string: profilePicURL!)
+            userPicImage.af_setImage(withURL: path!)
             nameLabel.text = user.name
+            screenNameLabel.text = user.screenName
+            followersLabel.text = String(user.followersCount!)
+            followingLabel.text = String(user.followingCount!)
+            tweetsLabel.text = String(user.tweetCount!)
         }
 
         // Do any additional setup after loading the view.
